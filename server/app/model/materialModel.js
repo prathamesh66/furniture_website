@@ -1,0 +1,34 @@
+const mongoose = require("mongoose");
+
+const schema = new mongoose.Schema({
+  materialName: {
+    type: String,
+    required: [true, "Name is required"],
+  },
+
+  materialOrder: {
+    type: Number,
+    required: [true, "Order is required"],
+    min: [1, "Minimum 1 value is required"],
+    max: [5, "Maximum 5 value is allow"],
+  },
+  
+  materialStatus: {
+    type: Boolean,
+    default: true,
+  },
+
+  isDeleted: {
+    type: Boolean,
+    default: false,
+  },
+
+  deletedAt: {
+    type: Date,
+    default: null,
+  },
+});
+
+let materialModel = mongoose.model("materials",schema)
+
+module.exports = { materialModel };
