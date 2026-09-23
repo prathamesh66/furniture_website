@@ -4,7 +4,8 @@ const { checkToken } = require('../../middleware/checkToken');
 
 let authUserRoutes = express.Router()
 
-const multer = require("multer")
+const multer = require("multer");
+const { placeOrder, changeOrderStatus, viewMyOrders, deleteMyOrder, getOrderDetails, viewAllOrders } = require('../../controller/website/placeOrderController');
 
 
 let storage = multer.diskStorage({
@@ -42,5 +43,27 @@ authUserRoutes.post(
 );
 
 authUserRoutes.post("/changePassword", checkToken, changePassword);
+
+
+authUserRoutes.post("/orderPlaced", upload.none(), checkToken, placeOrder);
+
+
+authUserRoutes.put("/orderChanged", upload.none(), checkToken, changeOrderStatus);
+
+authUserRoutes.get("/myOrders", checkToken, viewMyOrders);
+
+authUserRoutes.delete("/myOrders/:id", checkToken, deleteMyOrder);
+
+
+authUserRoutes.get(
+  "/myOrders/:id",
+  checkToken,
+  getOrderDetails
+);
+
+
+
+
+
 
 module.exports = { authUserRoutes };

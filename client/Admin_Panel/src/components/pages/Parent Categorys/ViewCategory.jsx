@@ -177,6 +177,9 @@ const ViewCategory = () => {
 
                   <tbody className="bg-gray-700 text-white ">
                     {showCategoryData.map((value, index) => {
+
+                      console.log("PATH:", path);
+                      console.log("CATEGORY IMAGE:", value.categoryImage);
                       return (
                         <tr className="" key={index}>
                           <td className="p-3  py-8  text-center">
@@ -192,11 +195,17 @@ const ViewCategory = () => {
 
                           <td className="p-3 py-8 text-center flex  justify-center align-items-center w-full">
                             <img
-                              src={path + value.categoryImage}
-                              // width={"150px"}
-                              // height={"100px"}
-                              width={"100px"}
-                              height={"100px"}
+                              src={`${path}${value.categoryImage}`}
+                              alt={value.categoryName}
+                              width={100}
+                              height={100}
+                              className="object-cover"
+                              onError={(e) => {
+                                console.log(
+                                  "IMAGE ERROR:",
+                                  e.currentTarget.src,
+                                );
+                              }}
                             />
                           </td>
 

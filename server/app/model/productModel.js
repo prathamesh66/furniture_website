@@ -5,7 +5,7 @@ const schema = new mongoose.Schema({
     type: String,
     required: [true, "Name is required"],
     minLength: [3, "The Minimum 3 Character is Required"],
-    maxLength: [15, "The Maximum 15 Character is Required"],
+    maxLength: [50, "The Maximum 15 Character is Required"],
   },
 
   parentCategory: {

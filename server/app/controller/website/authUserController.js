@@ -525,13 +525,13 @@ let resetPassword = async (req,res) => {
 
 let viewProfile = async (req, res) => {
   try {
-    console.log("USER ID FROM TOKEN:", req.userID);
+    // console.log("USER ID FROM TOKEN:", req.userID);
 
     let checkId = await userModel.findOne({
       _id: req.userID,
     });
 
-    console.log("USER FOUND:", checkId);
+    // console.log("USER FOUND:", checkId);
 
     if (checkId) {
       res.send({

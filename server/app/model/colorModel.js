@@ -19,7 +19,7 @@ const schema = new mongoose.Schema({
     type: String,
     required: [true, "Name is Required"],
     minLength: [3, "The Minimum 3 Character is Required"],
-    maxLength: [15, "The Maximum 15 Character is Required"],
+    maxLength: [30, "The Maximum 15 Character is Required"],
   }, 
   colorCode: {
     type: String,

@@ -32,6 +32,7 @@ import ViewFaq from './components/pages/Faq/ViewFaq'
 import AddProduct from './components/pages/Products/AddProduct'
 import ViewProduct from './components/pages/Products/ViewProduct'
 import Orders from './components/pages/Orders/Orders'
+import OrderDetails from './components/pages/Orders/orderDetails'
 
 createRoot(document.getElementById("root")).render(
   <>
@@ -55,7 +56,10 @@ createRoot(document.getElementById("root")).render(
           <Route path="/category/view" element={<ViewCategory />} />
           <Route path="/sub-category/add/:id?" element={<AddSubCategory />} />
           <Route path="/sub-category/view" element={<ViewSubCategory />} />
-          <Route path="/sub-Sub-category/add/:id?" element={<AddSubSubCategory />} />
+          <Route
+            path="/sub-Sub-category/add/:id?"
+            element={<AddSubSubCategory />}
+          />
           <Route
             path="/sub-Sub-category/view"
             element={<ViewSubSubCategory />}
@@ -64,7 +68,8 @@ createRoot(document.getElementById("root")).render(
           <Route path="/products/add/:id?" element={<AddProduct />}></Route>
           <Route path="/products/view" element={<ViewProduct />}></Route>
 
-          <Route path="/orders" element={<Orders />}></Route>
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/orders/view/:id" element={<OrderDetails />} />
 
           <Route path="/why-choose-us/add" element={<AddWhyChooseUs />} />
           <Route path="/why-choose-us/view" element={<ViewWhyChooseUs />} />

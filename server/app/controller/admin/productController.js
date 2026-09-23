@@ -328,6 +328,9 @@ let changeStatusProduct = async (req, res) => {
   });
 };
 
+
+
+
 module.exports = {
   createProduct,
   viewProduct,
@@ -341,4 +344,5 @@ module.exports = {
   changeStatusProduct,
   getColors,
   getMaterial,
+  
 };

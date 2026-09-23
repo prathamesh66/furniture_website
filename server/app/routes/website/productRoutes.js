@@ -13,6 +13,7 @@ const {
   viewBestSellingProduct,
   viewTopRatedProduct,
   getProductDetails,
+  productListing,
 } = require("../../controller/website/productController");
 
 
@@ -38,6 +39,8 @@ productRoutes.get("/top-rated", viewTopRatedProduct);
 
 // product Details
 productRoutes.get("/productDetails/:id", getProductDetails);
+
+productRoutes.get("/listing", productListing);
 
 
 module.exports = { productRoutes };

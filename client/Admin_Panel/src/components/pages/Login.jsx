@@ -1,101 +1,290 @@
-import { Link } from "react-router";
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 const Login = () => {
-  return (
-    <div>
-      <div className="w-full h-screen bg-[#F3F4F6]">
-        <div className="max-w-[800px] mx-auto py-[70px]">
-          <div className="grid grid-cols-[40%_60%] shadow-lg">
-            <div className="bg-[#3B82F6] py-[70px] px-[20px] rounded-lg">
-              <h1 className="text-white font-medium text-3xl text-center">
-                K - WD
-              </h1>
-              <p className="mt-[40px] text-center text-[#D1D5DB] font-medium">
-                With the power of K-WD, you can now focus only on functionaries
-                for your digital products, while leaving the UI design on us!
-              </p>
+  const navigate = useNavigate();
 
-              <div className="mt-[70px] text-center">
-                <p className="text-white">Don't have an account?</p>
-                <p className="underline text-white mt-[5px]">Get Started</p>
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const APIBASEURL = "http://localhost:8000/admin/";
+
+  // Handle input
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+
+    setError("");
+  };
+
+  // Login
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    if (!formData.email || !formData.password) {
+      setError("Email and password are required.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setError("");
+
+      const response = await axios.post(`${APIBASEURL}login`, formData);
+
+      console.log("ADMIN LOGIN RESPONSE:", response.data);
+
+      if (response.data._status) {
+        // Store JWT token
+        Cookies.set("admin_login", response.data.token);
+
+        // Store admin data
+        localStorage.setItem(
+          "adminData",
+          JSON.stringify(response.data.adminData),
+        );
+
+        // Redirect to dashboard
+        navigate("/dashboard");
+      } else {
+        setError(response.data._message);
+      }
+    } catch (error) {
+      console.log("ADMIN LOGIN ERROR:", error);
+
+      if (error.response?.data?._message) {
+        setError(error.response.data._message);
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-10">
+      <div className="w-full max-w-[950px] bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-[42%_58%]">
+          {/* LEFT SIDE */}
+          <div className="relative bg-[#3B82F6] px-8 py-12 md:px-10 md:py-16 text-white overflow-hidden">
+            {/* Background circles */}
+            <div className="absolute -top-20 -right-20 w-52 h-52 bg-white/10 rounded-full"></div>
+            <div className="absolute -bottom-24 -left-20 w-64 h-64 bg-white/10 rounded-full"></div>
+
+            <div className="relative z-10 h-full flex flex-col">
+              {/* Logo */}
+              <div>
+
+                <div className="w-12 h-1 bg-white mt-3 rounded-full"></div>
               </div>
 
-              <div className="mt-[40px] text-[#D1D5DB] text-center">
-                Read our <span className="underline">terms</span> and{" "}
-                <span className="underline">conditions</span>
+              {/* Content */}
+              <div className="mt-16">
+                <h2 className="text-3xl font-semibold leading-tight">
+                  Welcome Back!
+                </h2>
+
+                <p className="mt-5 text-blue-100 leading-7">
+                  Login to your admin account and manage your website, products,
+                  orders and customers from one place.
+                </p>
+              </div>
+
+              {/* Features */}
+              <div className="mt-10 space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                    ✓
+                  </div>
+                  <span className="text-blue-50">Manage your products</span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                    ✓
+                  </div>
+                  <span className="text-blue-50">Manage customer orders</span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                    ✓
+                  </div>
+                  <span className="text-blue-50">Control your website</span>
+                </div>
+              </div>
+
+              {/* Bottom */}
+              <div className="mt-auto pt-16">
+                <p className="text-sm text-blue-100">Secure Admin Panel</p>
+
+                <p className="text-xs text-blue-200 mt-2">
+                  © 2026 K-WD. All rights reserved.
+                </p>
               </div>
             </div>
+          </div>
 
-            <div className="bg-white px-[20px] py-[10px] rounded-lg">
-              <h1 className="mt-[20px] text-2xl font-semibold">
-                Account Login
-              </h1>
-              <form action="" className="mt-[25px]">
-                <div className="flex flex-col">
-                  <label htmlFor="" className="text-[#5d5a5a]">
+          {/* RIGHT SIDE */}
+          <div className="px-7 py-10 sm:px-10 md:px-12 md:py-14">
+            <div className="max-w-[500px] mx-auto">
+              {/* Heading */}
+              <div>
+                <h2 className="text-3xl font-bold text-gray-800">
+                  Admin Login
+                </h2>
+
+                <p className="text-gray-500 mt-2">
+                  Sign in to access your admin dashboard.
+                </p>
+              </div>
+
+              {/* Error */}
+              {error && (
+                <div className="mt-6 bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm">
+                  {error}
+                </div>
+              )}
+
+              {/* Form */}
+              <form onSubmit={handleLogin} className="mt-7">
+                {/* Email */}
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Email Address
                   </label>
+
                   <input
-                    type="text"
-                    className="p-2 border-1 border-[#ccc] rounded-lg mt-[5px]"
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Enter your email"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:border-[#3B82F6] focus:ring-2 focus:ring-blue-100 transition"
                   />
                 </div>
 
-                <div className="flex flex-col mt-[20px] relative">
-                  <label htmlFor="" className="text-[#5d5a5a]">
-                    Password
-                  </label>
-                  <p className="absolute right-[5px] text-blue-600">
-                    Forgot Password?
-                  </p>
-                  <input
-                    type="text"
-                    className="p-2 border-1 border-[#ccc] rounded-lg mt-[5px]"
-                  />
+                {/* Password */}
+                <div className="mt-5">
+                  <div className="flex items-center justify-between mb-2">
+                    <label
+                      htmlFor="password"
+                      className="text-sm font-medium text-gray-700"
+                    >
+                      Password
+                    </label>
+
+                    <button
+                      type="button"
+                      className="text-sm text-[#3B82F6] hover:underline"
+                      onClick={() => {
+                        // Forgot password will be implemented later
+                        alert("Forgot password will be added later.");
+                      }}
+                    >
+                      Forgot Password?
+                    </button>
+                  </div>
+
+                  <div className="relative">
+                    <input
+                      id="password"
+                      name="password"
+                      type={showPassword ? "text" : "password"}
+                      value={formData.password}
+                      onChange={handleChange}
+                      placeholder="Enter your password"
+                      className="w-full px-4 py-3 pr-20 border border-gray-300 rounded-lg outline-none focus:border-[#3B82F6] focus:ring-2 focus:ring-blue-100 transition"
+                    />
+
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-500 hover:text-[#3B82F6]"
+                    >
+                      {showPassword ? "Hide" : "Show"}
+                    </button>
+                  </div>
                 </div>
 
-                <div className="flex mt-[20px]">
-                  <input type="checkbox" />
-                  <label htmlFor="" className="text-[#5d5a5a] ml-[5px]">
+                {/* Remember */}
+                <div className="flex items-center mt-5">
+                  <input
+                    id="remember"
+                    type="checkbox"
+                    className="w-4 h-4 accent-[#3B82F6]"
+                  />
+
+                  <label
+                    htmlFor="remember"
+                    className="ml-2 text-sm text-gray-600"
+                  >
                     Remember Me
                   </label>
                 </div>
 
-                <div className="mt-[20px] w-full cursor-pointer">
-                  <Link to="/dashboard">
-                    <button className="table mx-auto border-1 border-black bg-[#3B82F6] text-white py-[5px] w-full text-[20px] rounded-lg border-none cursor-pointer">
-                      Log in
-                    </button>
-                  </Link>
+                {/* Login button */}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full mt-6 bg-[#3B82F6] hover:bg-blue-600 disabled:bg-blue-300 text-white font-medium py-3 rounded-lg transition duration-200"
+                >
+                  {loading ? "Logging in..." : "Login"}
+                </button>
+
+                {/* Divider */}
+                <div className="flex items-center gap-3 my-7">
+                  <div className="flex-1 h-px bg-gray-200"></div>
+
+                  <span className="text-sm text-gray-400">OR</span>
+
+                  <div className="flex-1 h-px bg-gray-200"></div>
                 </div>
 
-                <div className="flex items-center gap-3 justify-center mt-[20px]">
-                  <div className="w-[50px] h-[1px] bg-gray-300"></div>
+                {/* Google */}
+                <button
+                  type="button"
+                  className="w-full py-3 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition"
+                >
+                  <span className="mr-2">G</span>
+                  Continue with Google
+                </button>
 
-                  <span className="text-gray-500 text-sm">or login with</span>
-
-                  <div className="w-[50px] h-[1px] bg-gray-300"></div>
-                </div>
-
-                <div className="mt-[20px] w-full border-1 border-black rounded-lg">
-                  <button className="table mx-auto border-1 border-black hover:bg-[black] hover:text-white text-black py-[5px] w-full text-[20px] rounded-lg border-none">
-                    <span></span>
-                    Login with Google
-                  </button>
-                </div>
-
-                <div className="mt-[10px] w-full border-1 border-black rounded-lg">
-                  <button className="table mx-auto hover:bg-[#3B82F6] hover:text-white text-blue-600 py-[5px] w-full text-[20px] rounded-lg border-none">
-                    Login With Facebook
-                  </button>
-                </div>
+                {/* Facebook */}
+                <button
+                  type="button"
+                  className="w-full mt-3 py-3 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition"
+                >
+                  <span className="mr-2">f</span>
+                  Continue with Facebook
+                </button>
               </form>
+
+              {/* Footer */}
+              <p className="text-center text-xs text-gray-400 mt-8">
+                By continuing, you agree to our Terms & Conditions.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default Login
+export default Login;

@@ -26,7 +26,8 @@ const getBestSellingProducts = () => {
     .then((res) => res.data);
 };
 
-// Product Details
+
+
 const getProductsDetails = async (id) => {
   const url = `${API_BASE_URL}product/productDetails/${id}`;
 
@@ -38,6 +39,9 @@ const getProductsDetails = async (id) => {
 
   return res.data;
 };
+
+
+
 
 module.exports = {
   getFeaturedProducts,

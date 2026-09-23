@@ -9,6 +9,10 @@ const { subSubCategoryRoutes } = require("./subSubCategoryRoutes");
 const { productRoutes } = require("./productRoutes");
 const { whyChooseUsRoutes } = require("./whyChooseUsRoutes");
 const { sliderRoutes } = require("./sliderRoutes");
+const { orderRoutes } = require("./orderRoutes");
+const { loginRoutes } = require("./loginRoutes");
+const { adminAccountRoutes } = require("./adminAccountRoutes");
+const { dashboardRoutes } = require("./dashboardRoutes");
 
 let adminRoutes = express.Router();
 
@@ -26,6 +30,13 @@ let adminRoutes = express.Router();
 
 // in this we create the api and call in this the function
 
+
+adminRoutes.use("/", loginRoutes);
+
+adminRoutes.use("/account", adminAccountRoutes);
+
+adminRoutes.use("/dashboard", dashboardRoutes);
+
 adminRoutes.use("/color",colorRoutes)
 adminRoutes.use("/material", materialRoutes);
 adminRoutes.use("/country",countryRoutes)
@@ -37,6 +48,7 @@ adminRoutes.use("/product", productRoutes);
 adminRoutes.use("/whychooseus", whyChooseUsRoutes);
 adminRoutes.use("/slider", sliderRoutes);
 
+adminRoutes.use("/orders", orderRoutes);
 
 
 

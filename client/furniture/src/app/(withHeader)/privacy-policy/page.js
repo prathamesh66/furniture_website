@@ -1,6 +1,6 @@
-import React from 'react'
-import Breadcrumb from '../components/common/Breadcrumb';
-import Link from 'next/link';
+import React from "react";
+import Breadcrumb from "../components/common/Breadcrumb";
+import Link from "next/link";
 
 const Privacy_Policy = () => {
   return (
@@ -9,40 +9,42 @@ const Privacy_Policy = () => {
         <Breadcrumb title={"Privacy Policy"} />
       </div>
 
-      <div className="max-w-[1320px] mx-auto my-1">
+      <div className="max-w-[1320px] mx-auto my-1 px-4 sm:px-6 lg:px-8">
         <hr className="text-[#ccc]" />
 
-        <div className="my-8">
+        <div className="my-6 sm:my-8">
           <div>
-            <p className="font-semibold text-[20px] text-[#212121de]">
+            <p className="font-semibold text-lg sm:text-[20px] text-[#212121de]">
               Who we are
             </p>
-            <p className="mt-3">
+
+            <p className="mt-3 text-sm sm:text-base leading-6 sm:leading-7 break-words">
               Our website address is :
               <span className="text-[#c99471] ml-1">
-                <Link className="" href={"http://localhost/furniture"}>
+                <Link className="break-all" href={"http://localhost/furniture"}>
                   http://localhost/furniture
                 </Link>
               </span>
             </p>
           </div>
 
-          <div className="mt-3">
-            <p className="font-semibold text-[20px] text-[#212121de]">
+          <div className="mt-5 sm:mt-6">
+            <p className="font-semibold text-lg sm:text-[20px] text-[#212121de] leading-7">
               What personal data we collect and why we collect it
             </p>
 
-            <div className="mt-3">
-              <p className="font-semibold text-[20px] text-[#212121de]">
+            <div className="mt-4 sm:mt-5">
+              <p className="font-semibold text-lg sm:text-[20px] text-[#212121de]">
                 Comments
               </p>
-              <p className="mt-1">
+
+              <p className="mt-1 text-sm sm:text-base leading-6 sm:leading-7">
                 When visitors leave comments on the site we collect the data
                 shown in the comments form, and also the visitor’s IP address
                 and browser user agent string to help spam detection.
               </p>
 
-              <p className="mt-4">
+              <p className="mt-4 text-sm sm:text-base leading-6 sm:leading-7">
                 An anonymized string created from your email address (also
                 called a hash) may be provided to the Gravatar service to see if
                 you are using it. The Gravatar service privacy policy is
@@ -52,11 +54,12 @@ const Privacy_Policy = () => {
               </p>
             </div>
 
-            <div className="mt-3">
-              <p className="font-semibold text-[20px] text-[#212121de]">
+            <div className="mt-5 sm:mt-6">
+              <p className="font-semibold text-lg sm:text-[20px] text-[#212121de]">
                 Media
               </p>
-              <p className="mt-1">
+
+              <p className="mt-1 text-sm sm:text-base leading-6 sm:leading-7">
                 If you upload images to the website, you should avoid uploading
                 images with embedded location data (EXIF GPS) included. Visitors
                 to the website can download and extract any location data from
@@ -64,11 +67,12 @@ const Privacy_Policy = () => {
               </p>
             </div>
 
-            <div className="mt-3">
-              <p className="font-semibold text-[20px] text-[#212121de]">
+            <div className="mt-5 sm:mt-6">
+              <p className="font-semibold text-lg sm:text-[20px] text-[#212121de]">
                 Cookies
               </p>
-              <p className="mt-1">
+
+              <p className="mt-1 text-sm sm:text-base leading-6 sm:leading-7">
                 If you leave a comment on our site you may opt-in to saving your
                 name, email address and website in cookies. These are for your
                 convenience so that you do not have to fill in your details
@@ -76,14 +80,14 @@ const Privacy_Policy = () => {
                 for one year.
               </p>
 
-              <p className="mt-4">
+              <p className="mt-4 text-sm sm:text-base leading-6 sm:leading-7">
                 If you have an account and you log in to this site, we will set
                 a temporary cookie to determine if your browser accepts cookies.
                 This cookie contains no personal data and is discarded when you
                 close your browser.
               </p>
 
-              <p className="mt-4">
+              <p className="mt-4 text-sm sm:text-base leading-6 sm:leading-7">
                 When you log in, we will also set up several cookies to save
                 your login information and your screen display choices. Login
                 cookies last for two days, and screen options cookies last for a
@@ -92,7 +96,7 @@ const Privacy_Policy = () => {
                 will be removed.
               </p>
 
-              <p className="mt-4">
+              <p className="mt-4 text-sm sm:text-base leading-6 sm:leading-7">
                 If you edit or publish an article, an additional cookie will be
                 saved in your browser. This cookie includes no personal data and
                 simply indicates the post ID of the article you just edited. It
@@ -100,18 +104,19 @@ const Privacy_Policy = () => {
               </p>
             </div>
 
-            <div className="mt-3">
-              <p className="font-semibold text-[20px] text-[#212121de]">
+            <div className="mt-5 sm:mt-6">
+              <p className="font-semibold text-lg sm:text-[20px] text-[#212121de]">
                 Embedded content from other websites
               </p>
-              <p className="mt-1">
+
+              <p className="mt-1 text-sm sm:text-base leading-6 sm:leading-7">
                 Articles on this site may include embedded content (e.g. videos,
                 images, articles, etc.). Embedded content from other websites
                 behaves in the exact same way as if the visitor has visited the
                 other website.
               </p>
 
-              <p className="mt-4">
+              <p className="mt-4 text-sm sm:text-base leading-6 sm:leading-7">
                 These websites may collect data about you, use cookies, embed
                 additional third-party tracking, and monitor your interaction
                 with that embedded content, including tracking your interaction
@@ -120,18 +125,19 @@ const Privacy_Policy = () => {
               </p>
             </div>
 
-            <div className="mt-3">
-              <p className="font-semibold text-[20px] text-[#212121de]">
+            <div className="mt-5 sm:mt-6">
+              <p className="font-semibold text-lg sm:text-[20px] text-[#212121de]">
                 How long we retain your data
               </p>
-              <p className="mt-1">
+
+              <p className="mt-1 text-sm sm:text-base leading-6 sm:leading-7">
                 If you leave a comment, the comment and its metadata are
                 retained indefinitely. This is so we can recognize and approve
                 any follow-up comments automatically instead of holding them in
                 a moderation queue.
               </p>
 
-              <p className="mt-4">
+              <p className="mt-4 text-sm sm:text-base leading-6 sm:leading-7">
                 For users that register on our website (if any), we also store
                 the personal information they provide in their user profile. All
                 users can see, edit, or delete their personal information at any
@@ -140,11 +146,12 @@ const Privacy_Policy = () => {
               </p>
             </div>
 
-            <div className="mt-3">
-              <p className="font-semibold text-[20px] text-[#212121de]">
+            <div className="mt-5 sm:mt-6">
+              <p className="font-semibold text-lg sm:text-[20px] text-[#212121de]">
                 What rights you have over your data
               </p>
-              <p className="mt-1">
+
+              <p className="mt-1 text-sm sm:text-base leading-6 sm:leading-7">
                 If you have an account on this site, or have left comments, you
                 can request to receive an exported file of the personal data we
                 hold about you, including any data you have provided to us. You
@@ -154,11 +161,12 @@ const Privacy_Policy = () => {
               </p>
             </div>
 
-            <div className="mt-3">
-              <p className="font-semibold text-[20px] text-[#212121de]">
+            <div className="mt-5 sm:mt-6">
+              <p className="font-semibold text-lg sm:text-[20px] text-[#212121de]">
                 Where we send your data
               </p>
-              <p className="mt-1">
+
+              <p className="mt-1 text-sm sm:text-base leading-6 sm:leading-7">
                 Visitor comments may be checked through an automated spam
                 detection service.
               </p>
@@ -167,9 +175,9 @@ const Privacy_Policy = () => {
         </div>
       </div>
 
-      <hr className='text-[#ccc]'/>
+      <hr className="text-[#ccc]" />
     </section>
   );
-}
+};
 
 export default Privacy_Policy;
