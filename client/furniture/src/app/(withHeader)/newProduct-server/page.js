@@ -1,10 +1,10 @@
 import React from "react";
-import NewProductList from "../../components/newProduct-server/NewProductList";
 import {
   getFeaturedProducts,
   getNewArrivalProducts,
   getOnSaleProducts,
 } from "@/app/api-services/productApiService";
+import NewProductList from "../components/newProduct-server/NewProductList";
 
 const ProductServer = async () => {
   const featured = await getFeaturedProducts();
