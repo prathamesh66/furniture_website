@@ -5,7 +5,7 @@ let subCategoryRoutes = express.Router();
 
 
 const multer = require("multer");
-const { createSubCategory, viewSubCategory, getParentCategory, updateSubCategory, getDetails, deleteSubCategory, multiDeleteSubCategory, changeStatusSubCategory } = require("../../controller/admin/SubCategoryController");
+const { createSubCategory, viewSubCategory, getParentCategory, updateSubCategory, getDetails, deleteSubCategory, multiDeleteSubCategory, changeStatusSubCategory } = require("../../controller/admin/subCategoryController");
 
 // const upload = multer({dest: "uploads/"}) //middleware
 
