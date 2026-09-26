@@ -8,6 +8,8 @@ import { getOrderDetails } from "@/app/api-services/orderApiServices";
 const OrderDetails = () => {
   const params = useParams();
 
+  const BACKENDURL = "https://furniture-website-ienf.onrender.com";
+
   const id = params.id;
 
   const [order, setOrder] = useState(null);
@@ -213,7 +215,9 @@ const OrderDetails = () => {
                 className="flex items-center gap-3 sm:gap-5 border-b pb-4 sm:pb-5"
               >
                 <img
-                  src={`http://localhost:8000/uploads/product/${product.productImage}`}
+                  src={`${BACKENDURL}/uploads/product/${encodeURIComponent(
+                    product.productImage,
+                  )}`}
                   alt={product.productName || "Product"}
                   className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-cover border shrink-0"
                 />

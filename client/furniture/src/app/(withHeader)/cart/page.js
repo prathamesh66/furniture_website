@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import Breadcrumb from "../components/common/Breadcrumb";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 
 import { deleteCart, changeQty } from "../redux/cartSlice";
@@ -13,7 +12,9 @@ import { FiShoppingCart } from "react-icons/fi";
 const page = () => {
   const dispatch = useDispatch();
 
-  const BASE_URL = "http://localhost:8000/";
+  // const BASE_URL = "http://localhost:8000/";
+
+  const BACKENDURL = "https://furniture-website-ienf.onrender.com";
 
   const CART = useSelector((state) => state.cartStore?.cart || []);
 
@@ -109,7 +110,7 @@ const page = () => {
                       {/* Product Image */}
                       <td className="py-2 text-center border border-[#ccc]">
                         <img
-                          src={`http://localhost:8000/uploads/product/${encodeURIComponent(
+                          src={`${BACKENDURL}/uploads/product/${encodeURIComponent(
                             item.productImage,
                           )}`}
                           alt={item.productName}

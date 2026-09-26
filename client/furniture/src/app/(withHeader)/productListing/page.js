@@ -776,7 +776,10 @@ const ProductShowComponents = ({ value }) => {
 
   const imagePath = "http://localhost:8000/uploads/product/";
 
-  const imageUrl = productImage ? `${imagePath}${productImage}` : "";
+  const imageUrl = productImage
+    ? `https://furniture-website-ienf.onrender.com/uploads/product/${encodeURIComponent(productImage)}`
+    : "";
+    
 
   // ==========================================
   // WISHLIST STATE

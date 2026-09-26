@@ -670,11 +670,7 @@ const ProductTabs = () => {
           ========================= */
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
             {finalData.map((item) => (
-              <ProductShowComponents
-                key={item._id}
-                value={item}
-                imagePath={imagePath}
-              />
+              <ProductShowComponents key={item._id} value={item} />
             ))}
           </div>
         ) : (
@@ -698,7 +694,7 @@ export default ProductTabs;
    PRODUCT CARD
 ===================================================== */
 
-const ProductShowComponents = ({ value, imagePath }) => {
+const ProductShowComponents = ({ value }) => {
   console.log("PARENT CATEGORY:", value.parentCategory);
   console.log("SUB CATEGORY:", value.subCategory);
   console.log("SUB SUB CATEGORY:", value.subSubCategory);
@@ -733,7 +729,11 @@ const ProductShowComponents = ({ value, imagePath }) => {
   // =========================
   // IMAGE URL
   // =========================
-  const imageUrl = productImage ? `${imagePath}${productImage}` : "";
+  const BACKENDURL = "https://furniture-website-ienf.onrender.com";
+
+  const imageUrl = productImage
+    ? `${BACKENDURL}/uploads/product/${encodeURIComponent(productImage)}`
+    : "";
 
   // =========================
   // CHECK PRODUCT IN WISHLIST
@@ -887,13 +887,13 @@ const ProductShowComponents = ({ value, imagePath }) => {
               width={670}
               height={420}
               className="
-                w-full
-                h-full
-                object-cover
-                transition-transform
-                duration-500
-                group-hover:scale-105
-              "
+                    w-full
+                    h-full
+                    object-cover
+                    transition-transform
+                    duration-500
+                    group-hover:scale-105
+                  "
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-gray-500 text-sm">

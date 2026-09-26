@@ -6,6 +6,12 @@ import Link from "next/link";
 const NewProductList = ({ featured, newArrivals, onSale }) => {
   const [currentCategory, setCurrentCategory] = useState("Featured");
 
+  const BACKENDURL = "https://furniture-website-ienf.onrender.com";
+
+  const imageUrl = productImage
+    ? `${BACKENDURL}/uploads/product/${encodeURIComponent(productImage)}`
+    : "";
+
   let products = [];
   let imagePath = "";
 

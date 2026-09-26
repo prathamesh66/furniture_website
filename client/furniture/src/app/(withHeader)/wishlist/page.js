@@ -151,10 +151,12 @@ const page = () => {
                   {wishlistData.map((item) => {
                     const product = item.productId;
 
-                    const imagePath = "http://localhost:8000/uploads/product/";
+
+                    const BACKENDURL =
+                      "https://furniture-website-ienf.onrender.com";
 
                     const imageUrl = product?.productImage
-                      ? `${imagePath}${product.productImage}`
+                      ? `${BACKENDURL}/uploads/product/${encodeURIComponent(product.productImage)}`
                       : "";
 
                     return (

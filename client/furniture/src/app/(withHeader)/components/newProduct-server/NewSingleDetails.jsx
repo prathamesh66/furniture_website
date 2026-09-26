@@ -24,12 +24,16 @@ const NewSingleDetails = ({ data }) => {
 
   // ================= IMAGE =================
 
+  // ================= IMAGE =================
+
+  const BACKENDURL = "https://furniture-website-ienf.onrender.com";
+
   const getImageUrl = (imageName) => {
-    if (!imageName || !data?.path) {
+    if (!imageName) {
       return "";
     }
 
-    return `${data.path}${encodeURIComponent(imageName)}`;
+    return `${BACKENDURL}/uploads/product/${encodeURIComponent(imageName)}`;
   };
 
   const [mainImage, setMainImage] = useState(

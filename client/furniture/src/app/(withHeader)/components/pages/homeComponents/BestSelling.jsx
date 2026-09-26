@@ -524,8 +524,10 @@ const ProductShowComponents = ({ value, imagePath }) => {
      PRODUCT IMAGE
   ========================= */
 
+  const BACKENDURL = "https://furniture-website-ienf.onrender.com";
+
   const imageUrl = productImage
-    ? `${imagePath}${encodeURIComponent(productImage)}`
+    ? `${BACKENDURL}/uploads/product/${encodeURIComponent(productImage)}`
     : "";
 
   /* =========================
