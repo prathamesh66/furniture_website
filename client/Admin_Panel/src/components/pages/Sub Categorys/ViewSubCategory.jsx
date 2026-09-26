@@ -14,6 +14,8 @@ const ViewSubCategory = () => {
 
   let apiBaseUrl = import.meta.env.VITE_APIBASEURL;
 
+  const BACKENDURL = import.meta.env.VITE_APIBASEURL.replace("/admin/", "");
+
   let [viewSubCategoryData, setViewSubCategoryData] = useState([]);
 
   let [path, setPath] = useState("");
@@ -219,9 +221,16 @@ const ViewSubCategory = () => {
 
                           <td className="p-3 py-8">
                             <img
-                              src={path + value.subCategoryImage}
-                              width={"50px"}
-                              height={"50px"}
+                              src={`${BACKENDURL}/uploads/subCategory/${value.subCategoryImage}`}
+                              width="50"
+                              height="50"
+                              alt="Sub Category"
+                              onError={(e) => {
+                                console.log(
+                                  "SUB CATEGORY IMAGE ERROR:",
+                                  e.currentTarget.src,
+                                );
+                              }}
                             />
                           </td>
 

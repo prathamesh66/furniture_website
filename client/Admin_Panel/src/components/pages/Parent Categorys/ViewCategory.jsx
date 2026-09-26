@@ -16,6 +16,9 @@ const ViewCategory = () => {
 
      let apiBaseUrl = import.meta.env.VITE_APIBASEURL;
 
+
+     const BACKENDURL = apiBaseUrl.replace("/admin/", "");
+
      let [showCategoryData, setShowCategoryData] = useState([]);
 
      let [path, setPath] = useState('')
@@ -195,7 +198,7 @@ const ViewCategory = () => {
 
                           <td className="p-3 py-8 text-center flex  justify-center align-items-center w-full">
                             <img
-                              src={`${path}${value.categoryImage}`}
+                              src={`${BACKENDURL}/uploads/category/${value.categoryImage}`}
                               alt={value.categoryName}
                               width={100}
                               height={100}

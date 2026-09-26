@@ -16,6 +16,8 @@ const ViewProduct = () => {
 
    let apiBaseUrl = import.meta.env.VITE_APIBASEURL;
 
+   const BACKENDURL = import.meta.env.VITE_APIBASEURL.replace("/admin/", "");
+
    let [showProductData, setShowProductData] = useState([]);
 
    let [path, setPath] = useState('')
@@ -208,10 +210,17 @@ const ViewProduct = () => {
 
                           <td className="p-3 py-8  text-center">
                             <img
-                              src={path + value.productImage}
-                              width={"50px"}
-                              height={"50px"}
+                              src={`${BACKENDURL}/uploads/product/${value.productImage}`}
+                              width="50"
+                              height="50"
                               className="mx-auto"
+                              alt="Product"
+                              onError={(e) => {
+                                console.log(
+                                  "PRODUCT IMAGE ERROR:",
+                                  e.currentTarget.src,
+                                );
+                              }}
                             />
                           </td>
 
