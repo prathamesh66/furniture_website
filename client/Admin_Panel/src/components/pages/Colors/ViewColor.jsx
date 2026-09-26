@@ -40,7 +40,7 @@ const ViewColor = () => {
 
 
   let viewColor = () => {
-    axios.post(`${apiBaseUrl}/color/view`, {
+    axios.post(`${apiBaseUrl}color/view`, {
       colorName: colorName,
       page: currentPage
     })
@@ -77,7 +77,7 @@ const ViewColor = () => {
     // perform delete logic
 
     axios
-      .post(`${apiBaseUrl}/color/multiDelete`, { ids:selectedRecord })
+      .post(`${apiBaseUrl}color/multiDelete`, { ids:selectedRecord })
       .then((res) => res.data)
       .then((finalRes) => {
         // console.log(finalRes.deleteData);
@@ -93,7 +93,7 @@ const ViewColor = () => {
 
   let changeStatus = ()=> {
         axios
-          .post(`${apiBaseUrl}/color/changeStatus`, { ids: selectedRecord })
+          .post(`${apiBaseUrl}color/changeStatus`, { ids: selectedRecord })
           .then((res) => res.data)
           .then((finalRes) => {
             // console.log(finalRes.deleteData);

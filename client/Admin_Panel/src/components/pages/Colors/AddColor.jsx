@@ -37,7 +37,7 @@ const AddColor = () => {
       
       if(id) {
         axios
-          .put(`${apiBaseUrl}/color/update/${id}`, obj)
+          .put(`${apiBaseUrl}color/update/${id}`, obj)
           .then((res) => res.data)
           .then((finalRes) => {
             if (finalRes._status) {
@@ -61,7 +61,7 @@ const AddColor = () => {
 
       else {
         axios
-          .post(`${apiBaseUrl}/color/create`, obj)
+          .post(`${apiBaseUrl}color/create`, obj)
           .then((res) => res.data)
           .then((finalRes) => {
             if (finalRes._status) {
@@ -91,7 +91,7 @@ const AddColor = () => {
   useEffect(() => {
     if (id) {
       axios
-        .get(`${apiBaseUrl}/color/getDetails/${id}`)
+        .get(`${apiBaseUrl}color/getDetails/${id}`)
         .then((res) => res.data)
         .then((finalRes) => {
           setEditData(finalRes.details)
