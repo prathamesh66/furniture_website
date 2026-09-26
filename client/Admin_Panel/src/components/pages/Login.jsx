@@ -15,7 +15,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const APIBASEURL = "http://localhost:8000/admin/";
+  const APIBASEURL = import.meta.env.VITE_APIBASEURL;
 
   // Handle input
   const handleChange = (e) => {

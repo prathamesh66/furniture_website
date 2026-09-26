@@ -12,6 +12,10 @@ import "dropify/dist/css/dropify.min.css";
 import "dropify/dist/js/dropify.min.js";
 
 const Profile = () => {
+
+  const APIBASEURL = import.meta.env.VITE_APIBASEURL;
+  const BACKENDURL = APIBASEURL.replace("/admin/", "");
+
   const [activeTab, setActiveTab] = useState("editProfile");
 
   const [adminData, setAdminData] = useState(null);
@@ -33,14 +37,11 @@ const Profile = () => {
     try {
       setLoading(true);
 
-      const response = await axios.get(
-        "http://localhost:8000/admin/account/profile",
-        {
-          headers: {
-            Authorization: `Bearer ${Cookies.get("admin_login")}`,
-          },
+      const response = await axios.get(`${APIBASEURL}account/profile`, {
+        headers: {
+          Authorization: `Bearer ${Cookies.get("admin_login")}`,
         },
-      );
+      });
 
       console.log("ADMIN PROFILE RESPONSE:", response.data);
 
@@ -95,7 +96,7 @@ const Profile = () => {
       }
 
       const response = await axios.put(
-        "http://localhost:8000/admin/account/update",
+        `${APIBASEURL}account/update`,
         formData,
         {
           headers: {
@@ -134,7 +135,7 @@ const Profile = () => {
 
     try {
       const response = await axios.put(
-        "http://localhost:8000/admin/account/change-password",
+        `${APIBASEURL}account/change-password`,
         {
           currentPassword: currentPassword,
           newPassword: newPassword,
@@ -180,7 +181,6 @@ const Profile = () => {
       </div>
 
       <div className="p-5 bg-[#F1F4F5] flex gap-[2%] items-start">
-
         {/* ==============================
             LEFT PROFILE CARD
         ============================== */}
@@ -192,7 +192,7 @@ const Profile = () => {
                 className="w-[90px] h-[90px] rounded-full border object-cover"
                 src={
                   adminData?.profileImage
-                    ? `http://localhost:8000/uploads/admin/${adminData.profileImage}`
+                    ? `${BACKENDURL}/uploads/admin/${adminData.profileImage}`
                     : "/images/pexels-photo-2379005.jpg"
                 }
                 alt="Admin"
@@ -212,11 +212,7 @@ const Profile = () => {
                 <FaMobile />
               </p>
 
-              <p>
-                {loading
-                  ? "Loading..."
-                  : adminData?.mobile_number}
-              </p>
+              <p>{loading ? "Loading..." : adminData?.mobile_number}</p>
             </div>
 
             <div className="flex items-center gap-3 mt-2">
@@ -224,9 +220,7 @@ const Profile = () => {
                 <IoIosMail />
               </p>
 
-              <p>
-                {loading ? "Loading..." : adminData?.email}
-              </p>
+              <p>{loading ? "Loading..." : adminData?.email}</p>
             </div>
           </div>
         </div>
@@ -236,7 +230,6 @@ const Profile = () => {
         ============================== */}
 
         <div className="basis-[65%] rounded-lg shadow-lg bg-white p-5">
-
           {/* ==============================
               TABS
           ============================== */}
@@ -272,7 +265,6 @@ const Profile = () => {
           {activeTab === "editProfile" && (
             <form onSubmit={handleSubmit}>
               <div className="flex gap-[4%] mt-[30px]">
-
                 {/* IMAGE */}
 
                 <div className="basis-[35%]">
@@ -292,7 +284,6 @@ const Profile = () => {
                 {/* DETAILS */}
 
                 <div className="basis-[60%]">
-
                   {/* NAME */}
 
                   <div className="flex flex-col">
@@ -373,7 +364,6 @@ const Profile = () => {
           {activeTab === "changePassword" && (
             <form onSubmit={handleChangePassword}>
               <div className="mt-[30px]">
-
                 {/* CURRENT PASSWORD */}
 
                 <div className="flex flex-col">
@@ -384,9 +374,7 @@ const Profile = () => {
                     type="password"
                     placeholder="Current Password"
                     value={currentPassword}
-                    onChange={(e) =>
-                      setCurrentPassword(e.target.value)
-                    }
+                    onChange={(e) => setCurrentPassword(e.target.value)}
                     required
                   />
                 </div>
@@ -401,9 +389,7 @@ const Profile = () => {
                     type="password"
                     placeholder="New Password"
                     value={newPassword}
-                    onChange={(e) =>
-                      setNewPassword(e.target.value)
-                    }
+                    onChange={(e) => setNewPassword(e.target.value)}
                     required
                   />
                 </div>
@@ -418,9 +404,7 @@ const Profile = () => {
                     type="password"
                     placeholder="Confirm Password"
                     value={confirmPassword}
-                    onChange={(e) =>
-                      setConfirmPassword(e.target.value)
-                    }
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     required
                   />
                 </div>

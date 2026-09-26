@@ -5,6 +5,9 @@ import { useParams } from "react-router-dom";
 import Breadcrumb from "../../common/Breadcrumb";
 
 const OrderDetails = () => {
+
+  const APIBASEURL = import.meta.env.VITE_APIBASEURL;
+
   const { id } = useParams();
 
   const [order, setOrder] = useState(null);
@@ -20,9 +23,7 @@ const OrderDetails = () => {
 
   const getOrderDetails = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:8000/admin/orders/view/${id}`
-      );
+     const response = await axios.get(`${APIBASEURL}orders/view/${id}`);
 
       console.log("ORDER DETAILS RESPONSE:", response.data);
 
@@ -48,12 +49,9 @@ const OrderDetails = () => {
     try {
       setUpdatingStatus(true);
 
-      const response = await axios.put(
-        `http://localhost:8000/admin/orders/status/${id}`,
-        {
-          order_status: Number(orderStatus),
-        }
-      );
+      const response = await axios.put(`${APIBASEURL}orders/status/${id}`, {
+        order_status: Number(orderStatus),
+      });
 
       console.log("UPDATE STATUS RESPONSE:", response.data);
 

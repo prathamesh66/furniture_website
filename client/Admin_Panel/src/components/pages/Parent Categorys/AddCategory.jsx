@@ -10,6 +10,9 @@ import { useNavigate, useParams } from 'react-router';
 const AddCategory = () => {
   let apiBaseUrl = import.meta.env.VITE_APIBASEURL;
 
+  const BACKENDURL = import.meta.env.VITE_APIBASEURL.replace("/admin/", "");
+
+
   let navigate = useNavigate();
 
   let { id } = useParams();
@@ -42,7 +45,8 @@ const AddCategory = () => {
   useEffect(() => {
     if (!editData?.categoryImage) return;
 
-    let imageUrl = `http://localhost:8000/uploads/category/${editData.categoryImage}`;
+      let imageUrl = `${BACKENDURL}/uploads/category/${editData.categoryImage}`;
+
 
     console.log("IMAGE URL:", imageUrl);
 

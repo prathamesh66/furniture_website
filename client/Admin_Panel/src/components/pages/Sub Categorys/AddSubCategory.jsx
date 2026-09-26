@@ -9,6 +9,7 @@ import { useNavigate, useParams } from "react-router";
 
 const AddSubCategory = () => {
   let apiBaseUrl = import.meta.env.VITE_APIBASEURL;
+  const BACKENDURL = import.meta.env.VITE_APIBASEURL.replace("/admin/", "");
 
   let navigate = useNavigate();
 
@@ -49,7 +50,7 @@ const AddSubCategory = () => {
   useEffect(() => {
     if (!editData?.subCategoryImage) return;
 
-    let imageUrl = `http://localhost:8000/uploads/subCategory/${editData.subCategoryImage}`;
+    let imageUrl = `${BACKENDURL}/uploads/subCategory/${editData.subCategoryImage}`;
 
     console.log("IMAGE URL:", imageUrl);
 

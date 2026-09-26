@@ -12,6 +12,8 @@ const AddSubSubCategory = () => {
 
    let apiBaseUrl = import.meta.env.VITE_APIBASEURL;
 
+   const BACKENDURL = import.meta.env.VITE_APIBASEURL.replace("/admin/", "");
+
    let navigate = useNavigate();
 
    let [category, setCategory] = useState([]);
@@ -48,7 +50,7 @@ const AddSubSubCategory = () => {
   useEffect(() => {
     if (!editData?.subSubCategoryImage) return;
 
-    let imageUrl = `http://localhost:8000/uploads/subSubCategory/${editData.subSubCategoryImage}`;
+    let imageUrl = `${BACKENDURL}/uploads/subSubCategory/${editData.subSubCategoryImage}`;
 
     console.log("IMAGE URL:", imageUrl);
 

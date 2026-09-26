@@ -7,6 +7,10 @@ import Breadcrumb from "../common/Breadcrumb";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 
 const Dashboard = () => {
+
+
+  const APIBASEURL = import.meta.env.VITE_APIBASEURL;
+
   const [dashboardData, setDashboardData] = useState({
     users: 0,
     products: 0,
@@ -17,15 +21,15 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
 
   const getDashboardData = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:8000/admin/dashboard/",
-        {
-          headers: {
-            Authorization: `Bearer ${Cookies.get("admin_login")}`,
-          },
-        },
-      );
+   try {
+  const response = await axios.get(
+    `${APIBASEURL}dashboard/`,
+    {
+      headers: {
+        Authorization: `Bearer ${Cookies.get("admin_login")}`,
+      },
+    },
+  );
 
       console.log("DASHBOARD RESPONSE:", response.data);
 

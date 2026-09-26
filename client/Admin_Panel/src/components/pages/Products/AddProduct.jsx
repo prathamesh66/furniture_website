@@ -688,6 +688,9 @@ const AddProduct = () => {
 
   let apiBaseUrl = import.meta.env.VITE_APIBASEURL;
 
+  const BACKENDURL = import.meta.env.VITE_APIBASEURL.replace("/admin/", "");
+
+
   let navigate = useNavigate();
 
   let { id } = useParams();
@@ -826,7 +829,8 @@ const AddProduct = () => {
   useEffect(() => {
     if (!editData?.productImage) return;
 
-    let imageUrl = `http://localhost:8000/uploads/product/${editData.productImage}`;
+      let imageUrl = `${BACKENDURL}/uploads/product/${editData.productImage}`;
+
 
     console.log("IMAGE URL:", imageUrl);
 
@@ -970,8 +974,9 @@ const AddProduct = () => {
                       {galleryImages.map((image, index) => (
                         <div key={index} className="relative">
                           <img
-                            src={`http://localhost:8000/uploads/product/${image}`}
+                            src={`${BACKENDURL}/uploads/product/${image}`}
                             className="w-[150px] h-[150px] object-cover rounded-lg border"
+                            alt="Product"
                           />
 
                           <button

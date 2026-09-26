@@ -12,20 +12,20 @@ const Header = () => {
 
   const [adminData, setAdminData] = useState(null);
 
+  const APIBASEURL = import.meta.env.VITE_APIBASEURL;
+  const BACKENDURL = APIBASEURL.replace("/admin/", "");
+
   // ==============================
   // GET ADMIN PROFILE
   // ==============================
 
   const getAdminProfile = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:8000/admin/account/profile",
-        {
-          headers: {
-            Authorization: `Bearer ${Cookies.get("admin_login")}`,
-          },
+      const response = await axios.get(`${APIBASEURL}account/profile`, {
+        headers: {
+          Authorization: `Bearer ${Cookies.get("admin_login")}`,
         },
-      );
+      });
 
       console.log("HEADER ADMIN PROFILE:", response.data);
 
@@ -56,7 +56,6 @@ const Header = () => {
     <>
       <div className="p-5">
         <div className="flex justify-between items-center">
-
           {/* ==============================
               LEFT SIDE
           ============================== */}
@@ -84,14 +83,13 @@ const Header = () => {
 
           <div>
             <div className="group relative">
-
               {/* PROFILE IMAGE */}
 
               <img
                 className="w-[90px] h-[90px] rounded-full border object-cover"
                 src={
                   adminData?.profileImage
-                    ? `http://localhost:8000/uploads/admin/${adminData.profileImage}`
+                    ? `${BACKENDURL}/uploads/admin/${adminData.profileImage}`
                     : "/images/pexels-photo-2379005.jpg"
                 }
                 alt="Admin"
@@ -102,7 +100,6 @@ const Header = () => {
               ============================== */}
 
               <div className="hidden bg-white group-hover:block absolute top-[50px] left-[-140px] border border-[#ccccccad] rounded-sm shadow-md z-50">
-
                 {/* Profile */}
 
                 <Link to="/profile">
@@ -144,11 +141,9 @@ const Header = () => {
 
                   <p>Logout</p>
                 </button>
-
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </>

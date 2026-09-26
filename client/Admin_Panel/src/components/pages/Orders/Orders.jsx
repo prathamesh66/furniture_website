@@ -5,6 +5,9 @@ import Breadcrumb from "../../common/Breadcrumb";
 import { useNavigate } from "react-router-dom";
 
 const Orders = () => {
+
+  const APIBASEURL = import.meta.env.VITE_APIBASEURL;
+
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -18,25 +21,23 @@ const Orders = () => {
   // ==========================================
 
   const getAllOrders = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:8000/admin/orders/view"
-      );
+   try {
+     const response = await axios.get(`${APIBASEURL}orders/view`);
 
-      console.log("ALL ORDERS RESPONSE:", response.data);
+     console.log("ALL ORDERS RESPONSE:", response.data);
 
-      if (response.data._status) {
-        setOrders(response.data._data || []);
-      } else {
-        setOrders([]);
-      }
-    } catch (error) {
-      console.log("ALL ORDERS ERROR:", error);
+     if (response.data._status) {
+       setOrders(response.data._data || []);
+     } else {
+       setOrders([]);
+     }
+   } catch (error) {
+     console.log("ALL ORDERS ERROR:", error);
 
-      setOrders([]);
-    } finally {
-      setLoading(false);
-    }
+     setOrders([]);
+   } finally {
+     setLoading(false);
+   }
   };
 
   // ==========================================
@@ -76,9 +77,9 @@ const Orders = () => {
 
     try {
       for (const orderID of selectedOrders) {
-        const response = await axios.delete(
-          `http://localhost:8000/admin/orders/delete/${orderID}`
-        );
+       const response = await axios.delete(
+         `${APIBASEURL}orders/delete/${orderID}`,
+       );
 
         console.log(
           "DELETE ORDER RESPONSE:",
