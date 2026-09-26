@@ -27,7 +27,7 @@ const AddMaterials = () => {
 
     if(id) {
       axios
-      .put(`${apiBaseUrl}/material/update/${id}`, obj)
+      .put(`${apiBaseUrl}material/update/${id}`, obj)
       .then((res) => res.data)
       .then((finalRes) => {
         if (finalRes._status) {
@@ -45,7 +45,7 @@ const AddMaterials = () => {
 
   else {
     axios
-          .post(`${apiBaseUrl}/material/create`, obj)
+          .post(`${apiBaseUrl}material/create`, obj)
           .then((res) => res.data)
           .then((finalRes) => {
             if (finalRes._status) {
@@ -69,7 +69,7 @@ const AddMaterials = () => {
   useEffect(() => {
     if (id) {
       axios
-        .get(`${apiBaseUrl}/material/getDetails/${id}`)
+        .get(`${apiBaseUrl}material/getDetails/${id}`)
         .then((res) => res.data)
         .then((finalRes) => {
           // console.log(finalRes)

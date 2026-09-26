@@ -722,7 +722,7 @@ const AddProduct = () => {
 
   useEffect(() => {
     axios
-      .get(`${apiBaseUrl}/product/material`)
+      .get(`${apiBaseUrl}product/material`)
       .then((res) => res.data)
       .then((finalRes) => {
         setMaterials(finalRes.data);
@@ -731,7 +731,7 @@ const AddProduct = () => {
 
 
       axios
-        .get(`${apiBaseUrl}/product/view`)
+        .get(`${apiBaseUrl}product/view`)
         .then((res) => res.data)
         .then((finalRes) => {
           setProducts(finalRes.productData);
@@ -748,7 +748,7 @@ const AddProduct = () => {
     //   })
 
     axios
-      .get(`${apiBaseUrl}/product/color`)
+      .get(`${apiBaseUrl}product/color`)
       .then((res) => {
         // console.log("API Response:", res.data);
         setColors(res.data.data);
@@ -764,7 +764,7 @@ const AddProduct = () => {
       });
 
     axios
-      .get(`${apiBaseUrl}/product/parent`)
+      .get(`${apiBaseUrl}product/parent`)
       .then((res) => res.data)
       .then((finalRes) => {
         setCategorys(finalRes.data);
@@ -774,7 +774,7 @@ const AddProduct = () => {
   let getSubCategory = (id) => {
     if (id) {
       axios
-        .get(`${apiBaseUrl}/product/subCategory/${id}`)
+        .get(`${apiBaseUrl}product/subCategory/${id}`)
         .then((res) => res.data)
         .then((finalRes) => {
           setSubCategorys(finalRes.data);
@@ -797,7 +797,7 @@ const AddProduct = () => {
   let getSubSubCategory = (id) => {
     if (id) {
       axios
-        .get(`${apiBaseUrl}/product/subSubCategory/${id}`)
+        .get(`${apiBaseUrl}product/subSubCategory/${id}`)
         .then((res) => res.data)
         .then((finalRes) => {
           setSubSubCategorys(finalRes.data);
@@ -860,7 +860,7 @@ const AddProduct = () => {
 
     if (id) {
       axios
-        .put(`${apiBaseUrl}/product/update/${id}`, formValue)
+        .put(`${apiBaseUrl}product/update/${id}`, formValue)
         .then((res) => res.data)
         .then((finalRes) => {
           if (finalRes._status) {
@@ -873,7 +873,7 @@ const AddProduct = () => {
         });
     } else {
       axios
-        .post(`${apiBaseUrl}/product/create`, formValue)
+        .post(`${apiBaseUrl}product/create`, formValue)
         .then((res) => res.data)
         .then((finalRes) => {
           if (finalRes._status) {
@@ -890,7 +890,7 @@ const AddProduct = () => {
   useEffect(() => {
     if (id) {
       axios
-        .get(`${apiBaseUrl}/product/getDetails/${id}`)
+        .get(`${apiBaseUrl}product/getDetails/${id}`)
         .then((res) => res.data)
         .then((finalRes) => {
           let data = finalRes.details;

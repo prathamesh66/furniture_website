@@ -69,7 +69,7 @@ const AddSubCategory = () => {
 
   let getParentCategory = () => {
     axios
-      .get(`${apiBaseUrl}/subCategory/parent`)
+      .get(`${apiBaseUrl}subCategory/parent`)
       .then((res) => res.data)
       .then((finalRes) => {
         setCategory(finalRes.data);
@@ -90,7 +90,7 @@ const AddSubCategory = () => {
 
     if (id) {
       axios
-        .put(`${apiBaseUrl}/subCategory/update/${id}`, formValue)
+        .put(`${apiBaseUrl}subCategory/update/${id}`, formValue)
         .then((res) => res.data)
         .then((finalRes) => {
           if (finalRes._status) {
@@ -113,7 +113,7 @@ const AddSubCategory = () => {
 
     else {
       axios
-        .post(`${apiBaseUrl}/subCategory/create`, formValue)
+        .post(`${apiBaseUrl}subCategory/create`, formValue)
         .then((res) => res.data)
         .then((finalRes) => {
           if (finalRes._status) {
@@ -130,7 +130,7 @@ const AddSubCategory = () => {
   useEffect(() => {
     if (id) {
       axios
-        .get(`${apiBaseUrl}/subCategory/getDetails/${id}`)
+        .get(`${apiBaseUrl}subCategory/getDetails/${id}`)
         .then((res) => res.data)
         .then((finalRes) => {
           console.log(finalRes);

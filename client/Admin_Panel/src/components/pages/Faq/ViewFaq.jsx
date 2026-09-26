@@ -23,7 +23,7 @@ const ViewFaq = () => {
 
 
   let viewFaq = () => {
-    axios.get(`${apiBaseUrl}/faq/view`)
+    axios.get(`${apiBaseUrl}faq/view`)
     .then((res)=>res.data)
     .then((finalRes)=> {
       setShowFaqData(finalRes.faqData)
@@ -49,7 +49,7 @@ const ViewFaq = () => {
 
 
   let multiDeleteFaq = () => {
-    axios.post(`${apiBaseUrl}/faq/multiDelete`, {ids: selectedRecord})
+    axios.post(`${apiBaseUrl}faq/multiDelete`, {ids: selectedRecord})
     .then((res)=>res.data)
     .then((finalRes)=>{
       if(finalRes._status) {
@@ -62,7 +62,7 @@ const ViewFaq = () => {
 
 let changeStatus = () => {
   axios
-    .post(`${apiBaseUrl}/faq/changeStatus`, { ids: selectedRecord })
+    .post(`${apiBaseUrl}faq/changeStatus`, { ids: selectedRecord })
     .then((res) => res.data)
     .then((finalRes) => {
       if (finalRes._status) {

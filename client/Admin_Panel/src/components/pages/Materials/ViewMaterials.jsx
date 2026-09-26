@@ -23,7 +23,7 @@ const ViewMaterials = () => {
 
 
     let viewMaterial = () => {
-      axios.get(`${apiBaseUrl}/material/view`)
+      axios.get(`${apiBaseUrl}material/view`)
       .then((res)=>res.data)
       .then((finalRes)=> {
        setShowMaterialData(finalRes.materialData);
@@ -54,7 +54,7 @@ const ViewMaterials = () => {
         // perform delete logic
 
         axios
-          .post(`${apiBaseUrl}/material/multiDelete`, { ids: selectedRecord })
+          .post(`${apiBaseUrl}material/multiDelete`, { ids: selectedRecord })
           .then((res) => res.data)
           .then((finalRes) => {
             // console.log(finalRes.multiDeleteData);
@@ -71,7 +71,7 @@ const ViewMaterials = () => {
 
     let changeStatus = () => {
       axios
-        .post(`${apiBaseUrl}/material/changeStatus`, { ids: selectedRecord })
+        .post(`${apiBaseUrl}material/changeStatus`, { ids: selectedRecord })
         .then((res) => res.data)
         .then((finalRes) => {
           // console.log(finalRes.deleteData);

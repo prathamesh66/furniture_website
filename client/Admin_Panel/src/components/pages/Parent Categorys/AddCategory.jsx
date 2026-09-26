@@ -74,7 +74,7 @@ const AddCategory = () => {
 
     if (id) {
       axios
-        .put(`${apiBaseUrl}/category/update/${id}`, formDataObj)
+        .put(`${apiBaseUrl}category/update/${id}`, formDataObj)
         .then((res) => res.data)
         .then((finalRes) => {
           if (finalRes._status) {
@@ -97,7 +97,7 @@ const AddCategory = () => {
     
     else {
       axios
-        .post(`${apiBaseUrl}/category/create`, formDataObj)
+        .post(`${apiBaseUrl}category/create`, formDataObj)
         .then((res) => res.data)
         .then((finalRes) => {
           if (finalRes._status) {
@@ -119,7 +119,7 @@ const AddCategory = () => {
   useEffect(() => {
     if (id) {
       axios
-        .get(`${apiBaseUrl}/category/getDetails/${id}`)
+        .get(`${apiBaseUrl}category/getDetails/${id}`)
         .then((res) => res.data)
         .then((finalRes) => {
           setEditData(finalRes.details);

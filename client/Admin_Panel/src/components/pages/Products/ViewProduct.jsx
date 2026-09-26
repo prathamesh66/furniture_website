@@ -26,7 +26,7 @@ const ViewProduct = () => {
 
   let ViewProduct = () => {
     axios
-      .get(`${apiBaseUrl}/product/view`)
+      .get(`${apiBaseUrl}product/view`)
       .then((res) => res.data)
       .then((finalRes) => {
         setShowProductData(finalRes.productData);
@@ -58,7 +58,7 @@ const ViewProduct = () => {
     // perform delete logic
 
     axios
-      .post(`${apiBaseUrl}/product/multiDelete`, { ids: selectedRecord })
+      .post(`${apiBaseUrl}product/multiDelete`, { ids: selectedRecord })
       .then((res) => res.data)
       .then((finalRes) => {
         // console.log(finalRes.deleteData);
@@ -73,7 +73,7 @@ const ViewProduct = () => {
 
   let changeStatus = () => {
     axios
-      .post(`${apiBaseUrl}/product/changeStatus`, { ids: selectedRecord })
+      .post(`${apiBaseUrl}product/changeStatus`, { ids: selectedRecord })
       .then((res) => res.data)
       .then((finalRes) => {
         // console.log(finalRes.deleteData);

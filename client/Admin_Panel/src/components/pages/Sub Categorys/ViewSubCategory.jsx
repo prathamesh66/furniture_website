@@ -25,7 +25,7 @@ const ViewSubCategory = () => {
 
   let getSubCategoryData = () => {
     axios
-      .get(`${apiBaseUrl}/subCategory/view`)
+      .get(`${apiBaseUrl}subCategory/view`)
       .then((res) => res.data)
       .then((finalRes) => {
         setViewSubCategoryData(finalRes.subCategoryData);
@@ -56,7 +56,7 @@ const ViewSubCategory = () => {
     // perform delete logic
 
     axios
-      .post(`${apiBaseUrl}/subCategory/multiDelete`, { ids: selectedRecord })
+      .post(`${apiBaseUrl}subCategory/multiDelete`, { ids: selectedRecord })
       .then((res) => res.data)
       .then((finalRes) => {
         // console.log(finalRes.deleteData);
@@ -71,7 +71,7 @@ const ViewSubCategory = () => {
 
   let changeStatus = () => {
     axios
-      .post(`${apiBaseUrl}/subCategory/changeStatus`, { ids: selectedRecord })
+      .post(`${apiBaseUrl}subCategory/changeStatus`, { ids: selectedRecord })
       .then((res) => res.data)
       .then((finalRes) => {
         // console.log(finalRes.deleteData);
