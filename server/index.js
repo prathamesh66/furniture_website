@@ -23,21 +23,55 @@ app.use("/admin",adminRoutes);  // this is used the adminRoutes in this URL http
 
 app.use("/website",websiteRoutes);  // this is used the websiteRoutes in this URL http://localhost:8000/website
 
-app.use("/uploads/category", express.static("uploads/category"));
+// app.use("/uploads/category", express.static("uploads/category"));
 
-app.use("/uploads/subCategory", express.static("uploads/subCategory"));
+// app.use("/uploads/subCategory", express.static("uploads/subCategory"));
 
-app.use("/uploads/subSubCategory", express.static("uploads/subSubCategory"));
+// app.use("/uploads/subSubCategory", express.static("uploads/subSubCategory"));
 
-app.use("/uploads/product", express.static("uploads/product"));
+// app.use("/uploads/product", express.static("uploads/product"));
 
-app.use("/uploads/whychooseus", express.static("uploads/whychooseus"));
+// app.use("/uploads/whychooseus", express.static("uploads/whychooseus"));
 
-app.use("/uploads/slider", express.static("uploads/slider"));
+// app.use("/uploads/slider", express.static("uploads/slider"));
 
-app.use("/uploads/admin", express.static("uploads/admin"));
+// app.use("/uploads/admin", express.static("uploads/admin"));
 
 
+app.use(
+  "/uploads/category",
+  express.static(path.join(process.cwd(), "uploads/category")),
+);
+
+app.use(
+  "/uploads/subCategory",
+  express.static(path.join(process.cwd(), "uploads/subCategory")),
+);
+
+app.use(
+  "/uploads/subSubCategory",
+  express.static(path.join(process.cwd(), "uploads/subSubCategory")),
+);
+
+app.use(
+  "/uploads/product",
+  express.static(path.join(process.cwd(), "uploads/product")),
+);
+
+app.use(
+  "/uploads/whychooseus",
+  express.static(path.join(process.cwd(), "uploads/whychooseus")),
+);
+
+app.use(
+  "/uploads/slider",
+  express.static(path.join(process.cwd(), "uploads/slider")),
+);
+
+app.use(
+  "/uploads/admin",
+  express.static(path.join(process.cwd(), "uploads/admin")),
+);
 
 
 // app.listen(process.env.PORT || 8000,()=> {
