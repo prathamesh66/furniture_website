@@ -34,7 +34,7 @@ const AddCountry = () => {
 
     if(id) {
       axios
-        .put(`${apiBaseUrl}/country/update/${id}`, obj)
+        .put(`${apiBaseUrl}country/update/${id}`, obj)
         .then((res) => res.data)
         .then((finalRes) => {
           if (finalRes._status) {
@@ -55,7 +55,7 @@ const AddCountry = () => {
     }
     else {
       axios
-        .post(`${apiBaseUrl}/country/create`, obj)
+        .post(`${apiBaseUrl}country/create`, obj)
         .then((res) => res.data)
         .then((finalRes) => {
           if (finalRes._status) {
@@ -78,7 +78,7 @@ const AddCountry = () => {
   useEffect(()=> {
     if (id) {
       axios
-        .get(`${apiBaseUrl}/country/getDetails/${id}`)
+        .get(`${apiBaseUrl}country/getDetails/${id}`)
         .then((res) => res.data)
         .then((finalRes) => {
           setEditData(finalRes.details);

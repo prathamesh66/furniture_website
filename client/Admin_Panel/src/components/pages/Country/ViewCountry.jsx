@@ -23,7 +23,7 @@ const ViewCountry = () => {
 
 
   let viewCountry = () => {
-    axios.get(`${apiBaseUrl}/country/view`)
+    axios.get(`${apiBaseUrl}country/view`)
     .then((res)=>res.data)
     .then((finalRes)=> {
       setShowCountryData(finalRes.countryData);
@@ -50,7 +50,7 @@ const ViewCountry = () => {
 
     let deleteRecords = () => {
       axios
-        .post(`${apiBaseUrl}/country/multiDelete`, { ids: selectedRecord })
+        .post(`${apiBaseUrl}country/multiDelete`, { ids: selectedRecord })
         .then((res) => res.data)
         .then((finalRes) => {
           if (finalRes._status) {
@@ -64,7 +64,7 @@ const ViewCountry = () => {
     
     let changeStatus = () => {
 
-      axios.post(`${apiBaseUrl}/country/changeStatus`, {ids: selectedRecord})
+      axios.post(`${apiBaseUrl}country/changeStatus`, {ids: selectedRecord})
       .then((res)=>res.data)
       .then((finalRes)=> {
         if (finalRes._status) {
